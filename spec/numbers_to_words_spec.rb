@@ -17,4 +17,8 @@ describe NumbersToWords do
   it "should convert 18 to eighteen" do
     expect(NumbersToWords.to_words(18)).to eq("eighteen")
   end
+
+  it "should convert 26 to twenty six" do
+    expect(NumbersToWords.to_words(26)).to eq("twenty six")
+  end
 end

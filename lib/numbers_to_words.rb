@@ -19,10 +19,25 @@ class NumbersToWords
                    17 => "seventeen",
                    18 => "eighteen",
                    19 => "nineteen"} 
-              
+  @tens = { 20 => "twenty",
+            30 => "thirty",
+            40 => "forty",
+            50 => "fifty",
+            60 => "sixty",
+            70 => "seventy",
+            80 => "eighty",
+            90 => "ninety"}        
   def self.to_words(num)
     if @one_to_nineteen.has_key?(num)
       @one_to_nineteen[num]
+      else
+        string = ""
+        if num >= 20
+            string << @tens[num.to_s.split(//)[0].to_i * 10]
+            string << " "
+            string << @one_to_nineteen[num.to_s.split(//)[1].to_i]
+        end
+        string
     end
   end
 end
