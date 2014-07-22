@@ -10,6 +10,10 @@ describe NumbersToWords do
     expect(NumbersToWords.to_words(9)).to eq("nine")
   end
 
+  it "should convert 13 to thirteen" do
+    expect(NumbersToWords.to_words(13)).to eq("thirteen")
+  end
+
   it "should convert 18 to eighteen" do
     expect(NumbersToWords.to_words(18)).to eq("eighteen")
   end
