@@ -27,15 +27,15 @@ class NumbersToWords
             70 => "seventy",
             80 => "eighty",
             90 => "ninety"}
-  @large_numbers = { 100 => "hundred",
-                     1000 => "thousand",
-                     1000000 => "million"}
+  # @large_numbers = { 100 => "hundred",
+  #                    1000 => "thousand",
+  #                    1000000 => "million"}
   def self.zero_to_99(num)
     string = ""
     if @one_to_nineteen.has_key?(num)
       @one_to_nineteen[num]
       else       
-        if num >= 20 && num <= 99
+      if num >= 20 && num <= 99
             string << @tens[num.to_s.split(//)[0].to_i * 10] + " " +
                      @one_to_nineteen[num.to_s.split(//)[1].to_i]
       end
@@ -43,8 +43,21 @@ class NumbersToWords
   end
 
   def self.hundreds(num)
-    if num >= 99 && num <= 999
+    if num > 99 && num <= 999
       @one_to_nineteen[num.to_s.split(//)[0].to_i] + " hundred"    
+    end
+  end
+
+  def self.thousands(num)
+      if num.to_s.length == 4
+        @one_to_nineteen[num.to_s.split(//)[0].to_i] + " thousand"
+      elsif num.to_s.length == 5
+        self.zero_to_99(num.to_s[0,2].to_i) + " thousand"
+      elsif num.to_s.length == 6
+       
+
+      else
+        "The number is not in range"
     end
   end
 
