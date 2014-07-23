@@ -61,10 +61,12 @@ class NumbersToWords
   end
 
   def self.string_builder(num)
-         if num.to_s.length < 3
-          self.zero_to_99(num)
+      if num.to_s.length < 3
+        self.zero_to_99(num)
+      elsif num.to_s.length == 3
+        self.hundreds(num) + " and " + self.zero_to_99(num.to_s[1,2].to_i)
+      else num.to_s.length > 3
+        self.thousands(num) + self.hundreds(num.to_s.split(//).last(3).join.to_i) + " and " + self.zero_to_99(num.to_s.split(//).last(2).join.to_i)
       end
-    # self.thousands(num) + " " + self.hundreds(num) + " and " + 
-    # self.zero_to_99(num)
   end
 end
