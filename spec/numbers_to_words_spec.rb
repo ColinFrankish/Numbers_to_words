@@ -42,6 +42,9 @@ describe NumbersToWords do
   it "should convert 500000 to five hundred thousand" do
     expect(NumbersToWords.thousands(500000)).to eq("five hundred thousand")
   end
+  it "should convert 1000000 to one million" do
+    expect(NumbersToWords.thousands(1000000)).to eq("one million")
+  end
   # it "should convert 444555 to four hundred and forty four thousand, five hundred and fifty five" do
   #   expect(NumbersToWords.string_builder(444555)).to eq("four hundred and forty four thousand, five hundred and fifty five")
   # end

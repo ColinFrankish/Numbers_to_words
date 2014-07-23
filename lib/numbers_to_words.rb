@@ -27,9 +27,7 @@ class NumbersToWords
             70 => "seventy",
             80 => "eighty",
             90 => "ninety"}
-  # @large_numbers = { 100 => "hundred",
-  #                    1000 => "thousand",
-  #                    1000000 => "million"}
+  
   def self.zero_to_99(num)
     string = ""
     if @one_to_nineteen.has_key?(num)
@@ -49,13 +47,14 @@ class NumbersToWords
   end
 
   def self.thousands(num)
-      if num.to_s.length == 4
+    if num.to_s.length == 4
         @one_to_nineteen[num.to_s.split(//)[0].to_i] + " thousand"
       elsif num.to_s.length == 5
         self.zero_to_99(num.to_s[0,2].to_i) + " thousand"
       elsif num.to_s.length == 6
-       
-
+        self.hundreds(num.to_s[0,3].to_i) + " thousand"
+      elsif num == 1000000
+        "one million"
       else
         "The number is not in range"
     end
