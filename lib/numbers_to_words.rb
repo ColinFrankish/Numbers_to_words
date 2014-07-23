@@ -48,21 +48,23 @@ class NumbersToWords
 
   def self.thousands(num)
     if num.to_s.length == 4
-        @one_to_nineteen[num.to_s.split(//)[0].to_i] + " thousand"
+        @one_to_nineteen[num.to_s.split(//)[0].to_i] + " thousand,"
       elsif num.to_s.length == 5
-        self.zero_to_99(num.to_s[0,2].to_i) + " thousand"
+        self.zero_to_99(num.to_s[0,2].to_i) + " thousand,"
       elsif num.to_s.length == 6
-        self.hundreds(num.to_s[0,3].to_i) + " thousand"
+        self.hundreds(num.to_s[0,3].to_i) + " thousand,"
       elsif num == 1000000
         "one million"
       else
-        "The number is not in range"
+        "toast"
     end
   end
 
   def self.string_builder(num)
-    a = ""
-    a << self.hundreds(num) + " and " + 
-    self.zero_to_99(num.to_s[1,2].to_i)
+         if num.to_s.length < 3
+          self.zero_to_99(num)
+      end
+    # self.thousands(num) + " " + self.hundreds(num) + " and " + 
+    # self.zero_to_99(num)
   end
 end
