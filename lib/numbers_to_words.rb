@@ -46,18 +46,29 @@ class NumbersToWords
     end
   end
 
+  # def self.thousands(num)
+  #   if num.to_s.length == 4
+  #       @one_to_nineteen[num.to_s.split(//)[0].to_i] + " thousand,"
+  #     elsif num.to_s.length == 5
+  #       self.zero_to_99(num.to_s[0,2].to_i) + " thousand,"
+  #     elsif num.to_s.length == 6
+  #       self.hundreds(num.to_s[0,3].to_i) + " thousand,"
+  #     elsif num == 1000000
+  #       "one million"
+  #     else
+  #       "toast"
+  #   end
+  # end
+
   def self.thousands(num)
-    if num.to_s.length == 4
-        @one_to_nineteen[num.to_s.split(//)[0].to_i] + " thousand,"
-      elsif num.to_s.length == 5
-        self.zero_to_99(num.to_s[0,2].to_i) + " thousand,"
-      elsif num.to_s.length == 6
-        self.hundreds(num.to_s[0,3].to_i) + " thousand,"
-      elsif num == 1000000
-        "one million"
-      else
-        "toast"
-    end
+    calc = num.to_s[0..-4]
+      if calc.length == 3
+        self.hundreds(calc.to_i) + " and " +  self.zero_to_99(calc[1,2].to_i) + " thousand, "
+        elsif calc.length < 3
+        self.zero_to_99(calc[0..2].to_i) + " thousand,"
+        else num == 1000000
+         "one million"
+      end
   end
 
   def self.string_builder(num)
