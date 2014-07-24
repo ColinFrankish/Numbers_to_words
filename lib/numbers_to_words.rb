@@ -35,7 +35,7 @@ class NumbersToWords
       else       
       if num >= 20 && num <= 99
             string << @tens[num.to_s.split(//)[0].to_i * 10] + " " +
-                     @one_to_nineteen[num.to_s.split(//)[1].to_i]
+                     @one_to_nineteen[num.to_s.split(//)[1].to_i].to_s
       end
     end
   end
@@ -75,5 +75,8 @@ class NumbersToWords
         "one million"
       end
   end
+  def self.range
+    (1..15000).map { |n| string_builder(n)}
+  end
 end
-
+ puts NumbersToWords.range
