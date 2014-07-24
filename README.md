@@ -40,3 +40,4 @@ Rspec tests are passing and you can run the program by from the terminal when in
 `````
 ruby lib/numbers_to_words.rb
 `````
+Alternatively the 'rspec' command in the terminal will run the code and also show the tests passing. Take your pick!
