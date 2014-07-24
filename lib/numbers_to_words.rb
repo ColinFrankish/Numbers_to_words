@@ -46,24 +46,10 @@ class NumbersToWords
     end
   end
 
-  # def self.thousands(num)
-  #   if num.to_s.length == 4
-  #       @one_to_nineteen[num.to_s.split(//)[0].to_i] + " thousand,"
-  #     elsif num.to_s.length == 5
-  #       self.zero_to_99(num.to_s[0,2].to_i) + " thousand,"
-  #     elsif num.to_s.length == 6
-  #       self.hundreds(num.to_s[0,3].to_i) + " thousand,"
-  #     elsif num == 1000000
-  #       "one million"
-  #     else
-  #       "toast"
-  #   end
-  # end
-
   def self.thousands(num)
     calc = num.to_s[0..-4]
       if calc.length == 3
-        self.hundreds(calc.to_i) + " and " +  self.zero_to_99(calc[1,2].to_i) + " thousand, "
+        self.hundreds(calc.to_i) +  self.zero_to_99(calc[1,2].to_i).to_s + " thousand,"
         elsif calc.length < 3
         self.zero_to_99(calc[0..2].to_i) + " thousand,"
         else num == 1000000
@@ -75,9 +61,9 @@ class NumbersToWords
       if num.to_s.length < 3
         self.zero_to_99(num)
       elsif num.to_s.length == 3
-        self.hundreds(num) + " and " + self.zero_to_99(num.to_s[1,2].to_i)
+        self.hundreds(num) + self.zero_to_99(num.to_s[1,2].to_i).to_s
       else num.to_s.length > 3
-        self.thousands(num) + self.hundreds(num.to_s.split(//).last(3).join.to_i) + " and " + self.zero_to_99(num.to_s.split(//).last(2).join.to_i)
+        self.thousands(num).to_s + self.hundreds(num.to_s.split(//).last(3).join.to_i).to_s + " and " + self.zero_to_99(num.to_s.split(//).last(2).join.to_i).to_s
       end
   end
 end

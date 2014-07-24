@@ -48,6 +48,9 @@ describe NumbersToWords do
   it "string_builder should convert 45 to forty five" do
     expect(NumbersToWords.string_builder(45)).to eq("forty five")
   end
+  it "string_builder shoul convert 100" do
+    expect(NumbersToWords.string_builder(100)).to eq("one hundred")
+  end
   it "string_builder should convert 136 to one hundred and thirty six" do
     expect(NumbersToWords.string_builder(136)).to eq("one hundred and thirty six")
   end
@@ -56,5 +59,8 @@ describe NumbersToWords do
   end
   it "should convert 444555 to four hundred and forty four thousand, five hundred and fifty five" do
     expect(NumbersToWords.string_builder(444555)).to eq("four hundred and forty four thousand, five hundred and fifty five")
+  end
+  it "string_builder should convert 1000000" do
+    expect(NumbersToWords.string_builder(1000000)).to eq("one million")
   end
  end
