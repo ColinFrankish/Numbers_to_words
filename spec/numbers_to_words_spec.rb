@@ -33,22 +33,22 @@ describe NumbersToWords do
   it "should convert 956 to nine hundred and fifty six" do
     expect(NumbersToWords.string_builder(956)).to eq("nine hundred and fifty six")
   end
-  it "should convert 1000 to one thousand," do
+  it "should convert 3000 to three thousand," do
     expect(NumbersToWords.thousands(3000)).to eq("three thousand,")
   end
   it "should convert 29000 to twenty nine thousand," do
     expect(NumbersToWords.thousands(29000)).to eq("twenty nine thousand,")
   end
+  it "string_builder should convert 18789" do
+    expect(NumbersToWords.string_builder(18789)).to eq("eighteen thousand,seven hundred and eighty nine")    
+  end
   it "should convert 500000 to five hundred thousand," do
     expect(NumbersToWords.thousands(500000)).to eq("five hundred thousand,")
-  end
-  it "should convert 1000000 to one million" do
-    expect(NumbersToWords.thousands(1000000)).to eq("one million")
   end
   it "string_builder should convert 45 to forty five" do
     expect(NumbersToWords.string_builder(45)).to eq("forty five")
   end
-  it "string_builder shoul convert 100" do
+  it "string_builder should convert 100" do
     expect(NumbersToWords.string_builder(100)).to eq("one hundred")
   end
   it "string_builder should convert 136 to one hundred and thirty six" do
@@ -58,9 +58,9 @@ describe NumbersToWords do
     expect(NumbersToWords.string_builder(1111)).to eq("one thousand,one hundred and eleven")
   end
   it "should convert 444555 to four hundred and forty four thousand, five hundred and fifty five" do
-    expect(NumbersToWords.string_builder(444555)).to eq("four hundred and forty four thousand, five hundred and fifty five")
+    expect(NumbersToWords.string_builder(444555)).to eq("four hundred and forty four thousand,five hundred and fifty five")
   end
   it "string_builder should convert 1000000" do
     expect(NumbersToWords.string_builder(1000000)).to eq("one million")
   end
- end
+end

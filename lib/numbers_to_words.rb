@@ -48,12 +48,16 @@ class NumbersToWords
 
   def self.thousands(num)
     calc = num.to_s[0..-4]
-      if calc.length == 3
-        self.hundreds(calc.to_i) +  self.zero_to_99(calc[1,2].to_i).to_s + " thousand,"
-        elsif calc.length < 3
+    result = ""
+      if calc.length == 3 && self.zero_to_99(calc[1,2].to_i) == nil
+        result << self.hundreds(calc.to_i) + " thousand,"
+        result
+      elsif calc.length == 3
+        result << self.hundreds(calc.to_i)
+        self.zero_to_99(calc[1,2].to_i) == nil ? "" : result << " and " + self.zero_to_99(calc[1,2].to_i).to_s + " thousand,"
+        result
+      else calc.length < 3
         self.zero_to_99(calc[0..2].to_i) + " thousand,"
-        else num == 1000000
-         "one million"
       end
   end
 
@@ -61,9 +65,15 @@ class NumbersToWords
       if num.to_s.length < 3
         self.zero_to_99(num)
       elsif num.to_s.length == 3
-        self.hundreds(num) + self.zero_to_99(num.to_s[1,2].to_i).to_s
-      else num.to_s.length > 3
+        result = ""
+        result << self.hundreds(num) 
+        self.zero_to_99(num.to_s[1,2].to_i) == nil ? "" : result << " and " + self.zero_to_99(num.to_s[1,2].to_i).to_s
+        result  
+      elsif num.to_s.length > 3 && num.to_s.length < 7
         self.thousands(num).to_s + self.hundreds(num.to_s.split(//).last(3).join.to_i).to_s + " and " + self.zero_to_99(num.to_s.split(//).last(2).join.to_i).to_s
+      else num == 1000000
+        "one million"
       end
   end
 end
+
