@@ -76,7 +76,7 @@ class NumbersToWords
       end
   end
   def self.range
-    (1..15000).map { |n| string_builder(n)}
+    (1..100545).map { |n| string_builder(n)}
   end
 end
  puts NumbersToWords.range
