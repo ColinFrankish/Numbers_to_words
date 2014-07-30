@@ -51,11 +51,9 @@ class NumbersToWords
     result = ""
       if calc.length == 3 && hundreds_end_00(num) == nil
         result << hundreds(calc.to_i) + " thousand,"
-        result
       elsif calc.length == 3
         result << hundreds(calc.to_i)
         hundreds_end_00(num) == nil ? "" : result << " and " + hundreds_end_00(num).to_s + " thousand,"
-        result
       else calc.length < 3
         zero_to_99(calc[0..2].to_i) + " thousand,"
       end
@@ -70,7 +68,7 @@ class NumbersToWords
         hundreds_end_00(num) == nil ? "" : result << " and " + hundreds_end_00(num).to_s
         result  
       elsif num.to_s.length > 3 && num.to_s.length < 7
-        thousands(num).to_s + hundreds(num.to_s.split(//).last(3).join.to_i).to_s + " and " + zero_to_99(num.to_s.split(//).last(2).join.to_i).to_s
+        thousands(num).to_s + string_hundreds_helper(num) + " and " + string_zero_to_99_helper(num)
       else num == 1000000
         "one million"
       end
@@ -80,8 +78,16 @@ class NumbersToWords
     zero_to_99(num.to_s[1,2].to_i)
   end
 
+  def self.string_hundreds_helper(num)
+    hundreds(num.to_s.split(//).last(3).join.to_i).to_s
+  end
+
+  def self.string_zero_to_99_helper(num)
+    zero_to_99(num.to_s.split(//).last(2).join.to_i).to_s
+  end
+
   def self.range
-    (1..140545).map { |n| string_builder(n)}
+    (1..120000).map { |n| string_builder(n)}
   end
 end
  puts NumbersToWords.range
