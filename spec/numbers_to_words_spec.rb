@@ -64,4 +64,7 @@ describe NumbersToWords do
   it "string_builder should convert 1000000" do
     expect(NumbersToWords.string_builder(1000000)).to eq("one million")
   end
+  it"hundreds_end_00 should return nil given 100" do
+    expect(NumbersToWords.hundreds_end_00(100)).to eq(nil)
+  end
 end
