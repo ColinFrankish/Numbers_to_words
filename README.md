@@ -31,10 +31,10 @@ Created a basic testing environment using Rspec. Decided to create a Ruby class,
 Started by establishing hashes for the lower numbers that do not follow the 'normal' logic. i.e. 1 to 19, then the units of ten. 
 
 Next created methods for hundreds, thousands and to handle the scenarios such as 'one hundred AND fifty thousand' etc. 
+  
+Finally I added a quick range method to map numbers to the string_builder method to check what is returned. 
 
-The program runs by passing a value to the 'string_builder' method, or in this case I have mapped values up to about 140000 just to show it is working.  
-
-Finally I added a quick range method to map numbers to the class to check what is returned. I have halted the range at just over 100,000 as a million takes a while ! 
+Refactored code creating new helper methods to make code more readable.
 
 Rspec tests are passing and you can run the program by from the terminal when in the numbers_to_words directory using:
 `````
