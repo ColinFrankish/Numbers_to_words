@@ -49,34 +49,39 @@ class NumbersToWords
   def self.thousands(num)
     calc = num.to_s[0..-4]
     result = ""
-      if calc.length == 3 && self.zero_to_99(calc[1,2].to_i) == nil
-        result << self.hundreds(calc.to_i) + " thousand,"
+      if calc.length == 3 && hundreds_end_00(num) == nil
+        result << hundreds(calc.to_i) + " thousand,"
         result
       elsif calc.length == 3
-        result << self.hundreds(calc.to_i)
-        self.zero_to_99(calc[1,2].to_i) == nil ? "" : result << " and " + self.zero_to_99(calc[1,2].to_i).to_s + " thousand,"
+        result << hundreds(calc.to_i)
+        hundreds_end_00(num) == nil ? "" : result << " and " + hundreds_end_00(num).to_s + " thousand,"
         result
       else calc.length < 3
-        self.zero_to_99(calc[0..2].to_i) + " thousand,"
+        zero_to_99(calc[0..2].to_i) + " thousand,"
       end
   end
 
   def self.string_builder(num)
       if num.to_s.length < 3
-        self.zero_to_99(num)
+        zero_to_99(num)
       elsif num.to_s.length == 3
         result = ""
-        result << self.hundreds(num) 
-        self.zero_to_99(num.to_s[1,2].to_i) == nil ? "" : result << " and " + self.zero_to_99(num.to_s[1,2].to_i).to_s
+        result << hundreds(num) 
+        hundreds_end_00(num) == nil ? "" : result << " and " + hundreds_end_00(num).to_s
         result  
       elsif num.to_s.length > 3 && num.to_s.length < 7
-        self.thousands(num).to_s + self.hundreds(num.to_s.split(//).last(3).join.to_i).to_s + " and " + self.zero_to_99(num.to_s.split(//).last(2).join.to_i).to_s
+        thousands(num).to_s + hundreds(num.to_s.split(//).last(3).join.to_i).to_s + " and " + zero_to_99(num.to_s.split(//).last(2).join.to_i).to_s
       else num == 1000000
         "one million"
       end
   end
+
+  def self.hundreds_end_00(num)
+    zero_to_99(num.to_s[1,2].to_i)
+  end
+
   def self.range
-    (1..100545).map { |n| string_builder(n)}
+    (1..140545).map { |n| string_builder(n)}
   end
 end
  puts NumbersToWords.range

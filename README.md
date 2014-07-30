@@ -5,8 +5,8 @@
 This section is more of a problem solving exercise in code. The task is simple: the solution might not be.
 The challenge here is to write a Ruby script that outputs every number from 1 (one) to 1,000,000 (one million), but the output should be in words. Example output is as follows:
 
-one,
-two
+one, two
+
 ...
 
 one hundred and twelve
@@ -34,7 +34,7 @@ Next created methods for hundreds, thousands and to handle the scenarios such as
 
 The program runs by passing a value to the 'string_builder' method, or in this case I have mapped values up to about 140000 just to show it is working.  
 
-Finally I added a quick range method to map numbers to the class to check what is returned. I have halted the range at just over 1000000 as a million takes a while ! 
+Finally I added a quick range method to map numbers to the class to check what is returned. I have halted the range at just over 100,000 as a million takes a while ! 
 
 Rspec tests are passing and you can run the program by from the terminal when in the numbers_to_words directory using:
 `````
